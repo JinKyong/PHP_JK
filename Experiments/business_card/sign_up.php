@@ -16,16 +16,14 @@ $result = mysql_query($sql, $connect);
 
 $row = mysql_fetch_array($result);
 
-if(!$row) {
+if($row){
+    echo "<script> alert('오류 발생!!'); </script>";
+} else {
     $sql = "insert into business_card (name, password, email, company, side, jop, blog_url, facebook_id, twitter_id, github_id)";
     $sql .= " values ('$_POST[name]', $_POST[password], '$_POST[email]', '$_POST[company]', '$_POST[side]', '$_POST[jop]', ";
     $sql .= "'$_POST[blog_url]', '$_POST[facebook_id]', '$_POST[twitter_id]', '$_POST[github_id]');";
 
     $result = mysql_query($sql);
-}
-
-if($row){
-    echo "<script> alert('오류 발생!!'); </script>";
 }
 
 mysql_close($connect);
