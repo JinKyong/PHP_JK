@@ -1,6 +1,13 @@
 <!-- 구글 검색 : galley board css => CSS Only Pinterest-like Responsive Board Layout - Boardz.css | CSS ... -->
 <!-- 출처 : https://www.cssscript.com/css-pinterest-like-responsive-board-layout-boardz-css/ -->
 
+<?
+$connect = mysql_connect("localhost","JK","2015136066"); // DB 연결
+mysql_select_db("jk_db", $connect);                // DB 선택
+
+$sql = "Select * from boardz where title like '%$_GET[search]%';";
+?>
+
 <!doctype html>
 
 <html lang="en">
@@ -29,7 +36,7 @@
             <div class="text-center">
                 <h2>Beautiful <strong>Boardz</strong></h2>
                 <div style="display: block; width: 50%; margin-right: auto; margin-left: auto; position: relative;">
-                    <form class="example" action="action_page.php">
+                    <form class="example" method='get' action="board.php">
                         <input type="text" placeholder="Search.." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
@@ -40,40 +47,43 @@
 
             <!-- Example Boardz element. -->
             <div class="boardz centered-block beautiful">
-                <ul>
-                    <li>
-                        <img src="http://2.bp.blogspot.com/-pINYV0WlFyA/VUK-QcGbU5I/AAAAAAAABcU/fNy2pd2cFRk/s1600/WEB-Jack-White-Poster-Creative.png" alt="demo image"/>
-                    </li>
+                <?
+                $result = mysql_query($sql, $connect);
+                $num = mysql_num_rows($result);     //search된 이미지의 개수
 
-                    <li>
-                        <img src="http://payload140.cargocollective.com/1/10/349041/5110553/Florrie.jpg" alt="demo image"/>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <img src="http://wpmedia.ottawacitizen.com/2015/11/01.jpg?quality=55&strip=all&w=840&h=630&crop=1" alt="demo image"/>
-                    </li>
-                    <li>
-                        <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/ee/ff/8ceeff967c03c7cf4f86391dd6366544.jpg" alt="demo image"/>
-                    </li>
-                    <li>
-                        <img src="https://s-media-cache-ak0.pinimg.com/originals/87/16/8c/87168cbbf07cb54a9793bebaa20b1bde.jpg" alt="demo image"/>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <img src="https://s-media-cache-ak0.pinimg.com/736x/22/95/48/229548086245c332443109ca9f2e0890.jpg" alt="demo image"/>
-                    </li>
-                    <li>
-                        <h1>Sumo Summo</h1>
-                        Ex nostrud verterem mea, duo no delicata neglegentur. Audire integre rationibus ut pri, ex cibo oblique euismod sit, cibo iracundia vix at. Legimus torquatos definiebas an nec, mazim postulant at sit. Ne qui quando vocent accusata, nam tritani fierent no. Ea per vocent voluptatibus.
+                switch($num){                      //num에 따라 생성할 열 결정
+                    case 0:
+                        $col = 0; break;
+                    case 1:
+                        $col = 1; break;
+                    case 2:
+                        $col = 2; break;
+                    default:
+                        $col = 3; break;
+                }
+                $div = $col;                        //나누는 수 (남은 열의 수)
 
-                        <br />
+                if($col==0)
+                    echo "<h1> 검색 결과가 없습니다 </h1>";
+                else
+                    for($i=0; $i<$col; $i++){
+                        $quot = $num/$div;
+                        echo "<ul>";
+                        for ($j = 0; $j<$quot; $j++){
+                            $row = mysql_fetch_array($result);
+                            echo "<li>
+                                <h1>$row[title]</h1>
+                                $row[contents]
+                                <img src=\"$row[image_url]\" alt=\"demo image\"/>
+                               </li>";
+                            $num--;
+                        }
+                        echo "</ul>";
+                        $div--;
+                    }
 
-                        <img src="https://inspirationfeeed.files.wordpress.com/2014/01/ca402f7410884454ec5c303336e8591d1.jpg" alt="demo image"/>
-
-                    </li>
-                </ul>      
+                mysql_close($connect);
+                ?>
             </div>
         </div>
 
