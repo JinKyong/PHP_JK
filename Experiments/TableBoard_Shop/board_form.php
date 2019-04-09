@@ -4,7 +4,7 @@ if(isset($_GET[num])) {
     $connect = mysql_connect("localhost","JK","2015136066"); // DB 연결
     mysql_select_db("jk_db", $connect);                // DB 선택
 
-    $sql = "Select * from tableboard_shop where(num = $_GET[num]);";
+    $sql = "Select * from tableboard_shop where num = $_GET[num];";
     $result = mysql_query($sql, $connect);
     $row = mysql_fetch_array($result);
 }
@@ -42,7 +42,7 @@ if(isset($_GET[num])) {
 			<a href="index.php" style="border: 1px; padding: 10px; background: #36304a; display: block; width: 100px; text-align: center; border-radius: 10px; margin-bottom: 5px;"> Back </a>
             <?php
                 if(isset($_GET[num])) {
-                    echo "<form method=\"POST\" action=\"function/update.php?num=$_POST[num]\">";
+                    echo "<form method=\"POST\" action=\"function/update.php?num=$row[num]\">";
                 } else {
                     echo "<form method=\"POST\" action=\"function/insert.php\">";
                 }
