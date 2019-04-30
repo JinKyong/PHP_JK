@@ -1,0 +1,9 @@
+#element_to_pup_up{
+    min-width: 600px;
+    min-height: 1px;
+    border: solid;
+    border-radius: 10px;
+    background: #fff;
+    display: none;
+    padding: 20px;
+}
