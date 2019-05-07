@@ -1,4 +1,3 @@
-<meta charset="UTF-8">
 <?php
 /**
  * Created by PhpStorm.
@@ -7,6 +6,7 @@
  * Time: 오후 4:33
  */
 
+/*
 //<br> 줄 바꿈
 echo "안녕";
 echo "반가워 <br>";
@@ -34,8 +34,26 @@ $Day = date('d');
 echo "$Year<br>";
 echo "$Month<br>";
 echo "$Day<br>";
-
+*/
 /***************************************/
 
+session_start();
+
+$time = date('Y', $time);
+$a = setcookie("userid", "JK");
+$b = setcookie("username", "굳굳", time()+10);
 
 ?>
+<input type="radio" name="gender" value="M">
+<input type="radio" name="gender" value="T">
+<input type="radio" name="gender" value="P" checked>
+
+<input type="checkbox" name="JK" value="A">
+<input type="checkbox" name="JK" value="B">
+<input type="checkbox" name="JK" value="C">
+<input type="checkbox" name="JK" value="D">
+
+<select name="phone1">
+    <option value="111">010</option>
+    <option value="000">011</option>
+</select>

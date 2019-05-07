@@ -8,11 +8,11 @@
         responsideSlide: true
     });
 
-    $('#about').click(function() {
-        alert("u chose about");
-    });
-
     $('#login').click(function(){
         $('#element_to_pup_up').bPopup();
+    });
+
+    $('#upload').click(function(){
+        $('#upload_to_pup_up').bPopup();
     });
 </script>
