@@ -1,12 +1,25 @@
 #element_to_pup_up{
-    min-width: 200px;
-    min-height: 1px;
+    min-width: 300px;
+    min-height: 100px;
     border: solid;
     border-radius: 10px;
     background: #fff;
     display: none;
     padding: 20px;
 }
+
+#element_to_pup_up input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#element_to_pup_up input[type="submit"]{
+    background-color: #5897fb;
+    color:#fdf7f7;
+}
+
+
 
 #upload_to_pup_up{
     width: 400px;
@@ -16,4 +29,22 @@
     background: #fff;
     display: none;
     padding: 20px;
+}
+
+#upload_to_pup_up input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#upload_to_pup_up #preview{
+    width: 100%;
+    height: auto;
+    display: none;
+    margin-bottom: 20px;
+}
+
+#upload_to_pup_up input[type="submit"]{
+    background-color: #5897fb;
+    color:#fdf7f7;
 }

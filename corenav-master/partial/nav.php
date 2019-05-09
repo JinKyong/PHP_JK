@@ -11,7 +11,14 @@
     <ul class="menu">
         <li><a href="index.php">Home</a></li>
         <li><a href="About.php">About</a></li>
-        <li><a href="Gallery.php">Gallery</a></li>
+        <?php
+        if($_SESSION[id]) {
+            echo "<li ><a href = \"Gallery.php\" > Gallery</a ></li >";
+        }
+        else{
+            echo "<li ><a href = \"#\" > Gallery</a ></li >";
+        }
+        ?>
         <li><a href="#">Service</a></li>
         <li><a href="#">Contact Us</a></li>
         <?php

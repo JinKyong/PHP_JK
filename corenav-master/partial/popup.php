@@ -1,16 +1,3 @@
-<style>
-    #element_to_pup_up input{
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 5px;
-    }
-
-    #element_to_pup_up input[type="submit"]{
-        background-color: #5897fb;
-        color:#fdf7f7;
-    }
-</style>
-
 <div id="element_to_pup_up">
     <h3>Log-In</h3>
     <form method="post" action="function/login.php">
@@ -20,28 +7,10 @@
     </form>
 </div>
 
-<style>
-    #upload_to_pup_up input{
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 5px;
-    }
-
-    #upload_to_pup_up #preview{
-        width: 100%;
-        height: auto;
-    }
-
-    #upload_to_pup_up input[type="submit"]{
-        background-color: #5897fb;
-        color:#fdf7f7;
-    }
-</style>
-
 <div id="upload_to_pup_up">
     <h3>Upload</h3>
-    <form method="" action="">
-        <input type='file' id="imgInp">
+    <form enctype="multipart/form-data" method="POST" action="function/upload.php">
+        <input type='file' name="imglnp" id="imgInp">
         <img id="preview"src="#" />
         <input type="text" name="title" placeholder="Title">
         <input type="text" name="description" placeholder="Desc">
