@@ -76,5 +76,4 @@ else{
 //</ul>";
 
 echo "<script> location.replace('../index.php')</script>";
-
 ?>
